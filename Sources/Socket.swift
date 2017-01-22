@@ -3227,7 +3227,7 @@ public class Socket: SocketReader, SocketWriter {
 		if let _ = self.signature {
 			self.signature!.hostname = Socket.NO_HOSTNAME
 			self.signature!.port = Socket.SOCKET_INVALID_PORT
-			if self.signature!.path != nil {
+			if self.isListening && self.signature!.path != nil {
 				#if os(Linux)
 					_ = Glibc.unlink(self.signature!.path!)
 				#else
